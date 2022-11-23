@@ -1,0 +1,2 @@
+create database book charset=utf8;
+两个服务:图书服务和用户服务
