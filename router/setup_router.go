@@ -16,5 +16,5 @@ func SetupApiRouters(r *gin.Engine) {
 	v1.GET("/book/:id", controller.GetBookDetailHandler)
 	v1.GET("/books", controller.GetBookListHandler)
 	v1.PUT("/book", controller.UpdateBookHandler)
-	v1.DELETE("/book/:id", controller.DeleteBookHandler)
+	v1.DELETE("/book/:id", controller.DeleteBookHandler) // book/1
 }

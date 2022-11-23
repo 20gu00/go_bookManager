@@ -32,7 +32,7 @@ func CreateBookHandler(c *gin.Context) {
 
 //查看列表
 func GetBookListHandler(c *gin.Context) {
-	books := make([]*model.Book, 0)
+	books := make([]*model.Book, 0) //各个成员均为空
 	if tx := dao.DB.Preload("Users").Find(&books); tx.Error != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"msg": tx.Error,

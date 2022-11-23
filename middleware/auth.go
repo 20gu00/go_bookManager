@@ -10,7 +10,7 @@ import (
 func AuthMiddleware() func(c *gin.Context) {
 	return func(c *gin.Context) {
 		//获取token，根据token查询用户，如果查不到用户，那就token验证失败
-		token := c.Request.Header.Get("token")
+		token := c.Request.Header.Get("token") //bear token param
 		u := &model.User{}
 		row := dao.DB.Where("token = ?", token).First(&u).RowsAffected
 		if row != 1 {
