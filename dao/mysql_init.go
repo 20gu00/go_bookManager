@@ -7,21 +7,19 @@ import (
 	"gorm.io/gorm"
 )
 
+//声明全局变量
 var DB *gorm.DB
 
 func InitMysql() {
 	dsn := "root:100.Acjq@tcp(127.0.0.1:3306)/book?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
-		panic("数据库初始化失败" + err.Error())
+		panic("初始化数据库失败" + err.Error())
 	}
 	DB = db
-	fmt.Println("数据库初始化成功")
-
+	fmt.Println("初始化数据库成功")
 	//自动创建表
-	//真正的项目应该是有dba创建好数据表,代码进行ddl并不安全
 	if err := DB.AutoMigrate(model.User{}, model.Book{}); err != nil {
-		fmt.Println("自动创建表失败", err.Error())
+		fmt.Println("自动创建表失败:", err)
 	}
-
 }
